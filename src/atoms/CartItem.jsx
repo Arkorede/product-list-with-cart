@@ -1,4 +1,4 @@
-import { MdAddShoppingCart } from "react-icons/md";
+import addToCart from "../../public/assets/images/icon-add-to-cart.svg";
 
 const CartItem = (props) => {
   const { image, name, category, price } = props;
@@ -17,8 +17,8 @@ const CartItem = (props) => {
             className="w-full h-auto rounded-lg"
           />
         </picture>
-        <button className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex gap-x-2.5 items-center justify-center px-5 py-2 xl:px-8 xl:py-3 border border-rose-400 rounded-full bg-white">
-          <MdAddShoppingCart className="text-[20px] xl:text-[24px] text-red" />
+        <button className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex gap-x-2.5 items-center justify-center px-[1.8125rem] py-2.5 xl:px-[2.3125rem] xl:py-3 border border-rose-400 rounded-full bg-white">
+          <img src={addToCart} alt="add to cart" />
           <p className="font-semibold text-nowrap text-base">Add to Cart</p>
         </button>
       </div>
@@ -27,7 +27,7 @@ const CartItem = (props) => {
       <div className="w-full mt-10 space-y-0.5">
         <p className="text-rose-400">{name}</p>
         <p className="text-lg font-semibold">{category}</p>
-        <p className="text-lg text-red font-semibold">$ {price}</p>
+        <p className="text-lg text-red font-semibold">$ {price.toFixed(2)}</p>
       </div>
     </div>
   );

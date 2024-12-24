@@ -9,8 +9,8 @@ const SelectedCartItemAtom = () => {
           <p className="font-bold">Classic Tiramisu</p>
           <div className="flex justify-start items-center">
             <p className="text-red font-semibold mr-5">1x</p>
-            <p className="mr-2">@ $5.5</p>
-            <p className="">$ 5.50</p>
+            <p className="mr-2 text-rose-400 font-semibold">@ $5.5</p>
+            <p className="text-[#52525b] font-semibold">$ 5.50</p>
           </div>
         </div>
         <button className="border border-rose-300 rounded-full p-1">

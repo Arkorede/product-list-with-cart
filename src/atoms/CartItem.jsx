@@ -3,8 +3,6 @@ import { MdAddShoppingCart } from "react-icons/md";
 const CartItem = (props) => {
   const { image, name, category, price } = props;
 
-  console.log(props);
-
   return (
     <div className="w-full">
       {/* image with button container */}
@@ -19,9 +17,9 @@ const CartItem = (props) => {
             className="w-full h-auto rounded-lg"
           />
         </picture>
-        <button className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex gap-x-2.5 items-center justify-center px-9 py-3.5 border border-rose-400 rounded-full bg-white">
-          <MdAddShoppingCart className="text-[24px] text-red" />
-          <p className="font-semibold text-nowrap">Add to Cart</p>
+        <button className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex gap-x-2.5 items-center justify-center px-5 py-2 xl:px-8 xl:py-3 border border-rose-400 rounded-full bg-white">
+          <MdAddShoppingCart className="text-[20px] xl:text-[24px] text-red" />
+          <p className="font-semibold text-nowrap text-base">Add to Cart</p>
         </button>
       </div>
 

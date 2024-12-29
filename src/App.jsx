@@ -1,6 +1,3 @@
-import { useState } from "react";
-import viteLogo from "/vite.svg";
-import CartItem from "./atoms/CartItem";
 import ProductList from "./components/ProductList";
 import MyCart from "./components/MyCart";
 

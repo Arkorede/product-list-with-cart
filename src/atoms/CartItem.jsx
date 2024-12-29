@@ -1,4 +1,5 @@
-import addToCart from "../../public/assets/images/icon-add-to-cart.svg";
+import addToCart from "../assets/images/icon-add-to-cart.svg";
+import PropTypes from "prop-types";
 
 const CartItem = (props) => {
   const { image, name, category, price } = props;
@@ -19,7 +20,7 @@ const CartItem = (props) => {
         </picture>
         <button className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex gap-x-2.5 items-center justify-center px-[1.8125rem] py-2.5 xl:px-[2.3125rem] xl:py-3 border border-rose-400 rounded-full bg-white">
           <img src={addToCart} alt="add to cart" />
-          <p className="font-semibold text-nowrap text-base">Add to Cart</p>
+          <p className="text-base font-semibold text-nowrap">Add to Cart</p>
         </button>
       </div>
 
@@ -27,10 +28,22 @@ const CartItem = (props) => {
       <div className="w-full mt-10 space-y-0.5">
         <p className="text-rose-400">{name}</p>
         <p className="text-lg font-semibold">{category}</p>
-        <p className="text-lg text-red font-semibold">$ {price.toFixed(2)}</p>
+        <p className="text-lg font-semibold text-red">$ {price.toFixed(2)}</p>
       </div>
     </div>
   );
+};
+
+CartItem.propTypes = {
+  image: PropTypes.shape({
+    mobile: PropTypes.string.isRequired,
+    tablet: PropTypes.string.isRequired,
+    desktop: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+  }).isRequired,
+  name: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default CartItem;

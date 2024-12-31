@@ -16,7 +16,8 @@ export default {
         500: 'hsl(12, 20%, 44%)',
         900: 'hsl(14, 65%, 9%)',
       },
-      'white': 'hsl(0, 0%, 100%)'
+      'white': 'hsl(0, 0%, 100%)',
+      'black': 'hsl(0, 0%, 0%)'
     },
     extend: {},
     screens: {

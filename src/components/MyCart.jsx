@@ -42,7 +42,7 @@ const MyCart = () => {
       </div>
 
       {/* confirm order button */}
-      <button className="w-full py-4 mt-6 text-white capitalize rounded-full bg-red">
+      <button className="w-full py-4 mt-6 text-white capitalize rounded-full bg-red hover:bg-[#9a3412]">
         confirm order
       </button>
     </div>

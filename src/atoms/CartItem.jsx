@@ -1,8 +1,19 @@
-import addToCart from "../assets/images/icon-add-to-cart.svg";
+import iconAddToCart from "../assets/images/icon-add-to-cart.svg";
 import PropTypes from "prop-types";
+import { useCart } from "../context/CartContext";
+import { useEffect } from "react";
 
 const CartItem = (props) => {
   const { image, name, category, price } = props;
+  const { addToCart, cartItems } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart(props);
+  };
+
+  useEffect(() => {
+    console.log(cartItems);
+  }, [cartItems]);
 
   return (
     <div className="w-full">
@@ -18,8 +29,11 @@ const CartItem = (props) => {
             className="w-full h-auto rounded-lg"
           />
         </picture>
-        <button className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex gap-x-2.5 items-center justify-center px-[1.8125rem] py-2.5 xl:px-[2.3125rem] xl:py-3 border border-rose-400 rounded-full bg-white">
-          <img src={addToCart} alt="add to cart" />
+        <button
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex gap-x-2.5 items-center justify-center px-[1.8125rem] py-2.5 xl:px-[2.3125rem] xl:py-3 border border-rose-400 rounded-full bg-white hover:border-red hover:text-red"
+          onClick={handleAddToCart}
+        >
+          <img src={iconAddToCart} alt="add to cart" />
           <p className="text-base font-semibold text-nowrap">Add to Cart</p>
         </button>
       </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { CartContext } from "./CartContext";
 import PropTypes from "prop-types";
 
@@ -55,6 +55,15 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const totalPrice = useMemo(() => {
+    return cartItems
+      .filter((cartItem) => cartItem.isSelected)
+      .reduce(
+        (total, cartItem) => total + cartItem.price * cartItem.quantity,
+        0
+      );
+  }, [cartItems]);
+
   return (
     <CartContext.Provider
       value={{
@@ -63,6 +72,7 @@ export const CartProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         toggleSelected,
+        totalPrice,
       }}
     >
       {children}

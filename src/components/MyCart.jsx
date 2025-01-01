@@ -4,7 +4,9 @@ import SelectedCartItemAtom from "../atoms/SelectedCartItemAtom";
 import { useCart } from "../context/CartContext";
 
 const MyCart = () => {
-  const { cartItems } = useCart();
+  const { cartItems, totalPrice } = useCart();
+
+  console.log(totalPrice);
 
   return (
     <div className="px-6 py-[1.625rem] w-full rounded-lg bg-white">
@@ -37,7 +39,7 @@ const MyCart = () => {
             {/* Total Price */}
             <div className="flex items-center justify-between my-8">
               <p className="text-[#52525b] font-semibold">Order Total</p>
-              <p className="text-2xl font-bold">$46.50</p>
+              <p className="text-2xl font-bold">${totalPrice}</p>
             </div>
 
             {/* carbon-neutral delivery */}

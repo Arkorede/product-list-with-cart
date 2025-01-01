@@ -7,13 +7,20 @@ import { useEffect } from "react";
 
 const CartItem = (props) => {
   const { image, name, category, price, isSelected } = props;
-  const { addToCart, cartItems } = useCart();
+  const { addToCart, cartItems, increaseQuantity, decreaseQuantity } =
+    useCart();
 
   const handleAddToCart = () => {
     addToCart(props);
   };
 
-  console.log(props);
+  const handleIncreaseQuantity = () => {
+    increaseQuantity(props.name);
+  };
+
+  const handleDecreaseQuantity = () => {
+    decreaseQuantity(props.name);
+  };
 
   useEffect(() => {
     console.log(cartItems);
@@ -41,11 +48,17 @@ const CartItem = (props) => {
           {isSelected ? (
             // increment and decrement buttons
             <div className="flex items-center justify-between px-3 py-2.5 bg-red rounded-full w-[9.8125rem] xl:w-[10.875rem]">
-              <button className="w-5 h-5 p-1 border border-white rounded-full">
+              <button
+                className="w-5 h-5 p-1 border border-white rounded-full"
+                onClick={handleIncreaseQuantity}
+              >
                 <img src={iconIncrementQuantity} alt="increase quantity" />
               </button>
               <p className="text-base font-semibold text-white">1</p>
-              <button className="w-5 h-5 p-1 border border-white rounded-full">
+              <button
+                className="w-5 h-5 p-1 border border-white rounded-full"
+                onClick={handleDecreaseQuantity}
+              >
                 <img src={iconDecrementQuantity} alt="decrease quantity" />
               </button>
             </div>

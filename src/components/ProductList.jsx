@@ -12,8 +12,17 @@ const ProductList = () => {
         const cartItem = cartItems.find((item) => item.name === product.name);
         // Determine if the item is selected
         const isSelected = cartItem ? cartItem.isSelected : false;
+        // Determine the quantity of the item selected
+        const quantity = cartItem ? cartItem.quantity : 0;
         // Return the CartItem component for each product
-        return <CartItem key={index} {...product} isSelected={isSelected} />;
+        return (
+          <CartItem
+            key={index}
+            {...product}
+            isSelected={isSelected}
+            quantity={quantity}
+          />
+        );
       })}
     </div>
   );

@@ -6,7 +6,7 @@ import { useCart } from "../context/CartContext";
 import { useEffect } from "react";
 
 const CartItem = (props) => {
-  const { image, name, category, price, isSelected } = props;
+  const { image, name, category, price, isSelected, quantity } = props;
   const { addToCart, cartItems, increaseQuantity, decreaseQuantity } =
     useCart();
 
@@ -54,7 +54,7 @@ const CartItem = (props) => {
               >
                 <img src={iconIncrementQuantity} alt="increase quantity" />
               </button>
-              <p className="text-base font-semibold text-white">1</p>
+              <p className="text-base font-semibold text-white">{quantity}</p>
               <button
                 className="w-5 h-5 p-1 border border-white rounded-full"
                 onClick={handleDecreaseQuantity}
@@ -95,6 +95,7 @@ CartItem.propTypes = {
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
   isSelected: PropTypes.bool.isRequired,
 };
 

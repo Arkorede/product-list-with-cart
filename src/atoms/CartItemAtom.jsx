@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useCart } from "../context/CartContext";
 import { useEffect } from "react";
 
-const CartItem = (props) => {
+const CartItemAtom = (props) => {
   const { image, name, category, price, isSelected, quantity } = props;
   const { addToCart, cartItems, increaseQuantity, decreaseQuantity } =
     useCart();
@@ -85,7 +85,7 @@ const CartItem = (props) => {
   );
 };
 
-CartItem.propTypes = {
+CartItemAtom.propTypes = {
   image: PropTypes.shape({
     mobile: PropTypes.string.isRequired,
     tablet: PropTypes.string.isRequired,
@@ -99,4 +99,4 @@ CartItem.propTypes = {
   isSelected: PropTypes.bool.isRequired,
 };
 
-export default CartItem;
+export default CartItemAtom;

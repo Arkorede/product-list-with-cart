@@ -6,8 +6,6 @@ import { useCart } from "../context/CartContext";
 const MyCart = () => {
   const { cartItems, totalPrice } = useCart();
 
-  console.log(totalPrice);
-
   return (
     <div className="px-6 py-[1.625rem] w-full rounded-lg bg-white">
       <h2 className="text-xl font-bold text-red">

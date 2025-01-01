@@ -1,8 +1,14 @@
 import removeItemIcon from "../assets/images/icon-remove-item.svg";
 import PropTypes from "prop-types";
+import { useCart } from "../context/CartContext";
 
 const SelectedCartItemAtom = (props) => {
   const { name, price, quantity } = props;
+  const { removeFromCart } = useCart();
+
+  const handleRemoveFromCart = () => {
+    removeFromCart(props.name);
+  };
 
   return (
     <>
@@ -15,7 +21,10 @@ const SelectedCartItemAtom = (props) => {
             <p className="font-bold text-rose-400">$ {price * quantity}</p>
           </div>
         </div>
-        <button className="p-1 border rounded-full border-rose-300 hover:filter hover:brightness-0">
+        <button
+          className="p-1 border rounded-full border-rose-300 hover:filter hover:brightness-0"
+          onClick={handleRemoveFromCart}
+        >
           <img src={removeItemIcon} alt="remove item" className="" />
         </button>
       </div>

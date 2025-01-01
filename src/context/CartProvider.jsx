@@ -55,6 +55,12 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const removeFromCart = (itemName) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((cartItem) => cartItem.name !== itemName)
+    );
+  };
+
   const totalPrice = useMemo(() => {
     return cartItems
       .filter((cartItem) => cartItem.isSelected)
@@ -72,6 +78,7 @@ export const CartProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         toggleSelected,
+        removeFromCart,
         totalPrice,
       }}
     >

@@ -15,18 +15,56 @@ export const CartProvider = ({ children }) => {
       if (existingItem) {
         return prevItems.map((cartItem) =>
           cartItem.name === item.name
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            ? { ...cartItem, quantity: cartItem.quantity + 1, isSelected: true }
             : cartItem
         );
         // If item is not in cart, add item with quantity of 1
       } else {
-        return [...prevItems, { ...item, quantity: 1 }];
+        return [...prevItems, { ...item, quantity: 1, isSelected: true }];
       }
     });
   };
 
+  const increaseQuantity = (itemName) => {
+    setCartItems((prevItems) =>
+      prevItems.map((cartItem) =>
+        cartItem.name === itemName
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      )
+    );
+  };
+
+  const decreaseQuantity = (itemName) => {
+    setCartItems((prevItems) =>
+      prevItems.map((cartItem) =>
+        cartItem.name === itemName
+          ? { ...cartItem, quantity: Math.max(cartItem.quantity - 1, 1) }
+          : cartItem
+      )
+    );
+  };
+
+  const toggleSelected = (itemName) => {
+    setCartItems((prevItems) =>
+      prevItems.map((cartItem) =>
+        cartItem.name === itemName
+          ? { ...cartItem, isSelected: !cartItem.isSelected }
+          : cartItem
+      )
+    );
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        increaseQuantity,
+        decreaseQuantity,
+        toggleSelected,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

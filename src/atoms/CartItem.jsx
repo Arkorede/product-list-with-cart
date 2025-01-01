@@ -1,15 +1,19 @@
 import iconAddToCart from "../assets/images/icon-add-to-cart.svg";
+import iconIncrementQuantity from "../assets/images/icon-increment-quantity.svg";
+import iconDecrementQuantity from "../assets/images/icon-decrement-quantity.svg";
 import PropTypes from "prop-types";
 import { useCart } from "../context/CartContext";
 import { useEffect } from "react";
 
 const CartItem = (props) => {
-  const { image, name, category, price } = props;
+  const { image, name, category, price, isSelected } = props;
   const { addToCart, cartItems } = useCart();
 
   const handleAddToCart = () => {
     addToCart(props);
   };
+
+  console.log(props);
 
   useEffect(() => {
     console.log(cartItems);
@@ -18,7 +22,11 @@ const CartItem = (props) => {
   return (
     <div className="w-full">
       {/* image with button container */}
-      <div className="relative w-full">
+      <div
+        className={`relative w-full ${
+          isSelected ? "border-2 border-red rounded-lg" : ""
+        }`}
+      >
         <picture className="">
           <source srcSet={image.mobile} media="(max-width: 375px)" />
           <source srcSet={image.tablet} media="(max-width: 768px)" />
@@ -29,13 +37,29 @@ const CartItem = (props) => {
             className="w-full h-auto rounded-lg"
           />
         </picture>
-        <button
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex gap-x-2.5 items-center justify-center px-[1.8125rem] py-2.5 xl:px-[2.3125rem] xl:py-3 border border-rose-400 rounded-full bg-white hover:border-red hover:text-red"
-          onClick={handleAddToCart}
-        >
-          <img src={iconAddToCart} alt="add to cart" />
-          <p className="text-base font-semibold text-nowrap">Add to Cart</p>
-        </button>
+        <div className="absolute bottom-0 -translate-x-1/2 translate-y-1/2 left-1/2">
+          {isSelected ? (
+            // increment and decrement buttons
+            <div className="flex items-center justify-between px-3 py-2.5 bg-red rounded-full w-[9.8125rem] xl:w-[10.875rem]">
+              <button className="w-5 h-5 p-1 border border-white rounded-full">
+                <img src={iconIncrementQuantity} alt="increase quantity" />
+              </button>
+              <p className="text-base font-semibold text-white">1</p>
+              <button className="w-5 h-5 p-1 border border-white rounded-full">
+                <img src={iconDecrementQuantity} alt="decrease quantity" />
+              </button>
+            </div>
+          ) : (
+            // add to cart button
+            <button
+              className="flex gap-x-2.5 items-center justify-center px-[1.8125rem] py-2.5 xl:px-[2.3125rem] xl:py-3 border border-rose-400 rounded-full bg-white hover:border-red hover:text-red"
+              onClick={handleAddToCart}
+            >
+              <img src={iconAddToCart} alt="add to cart" />
+              <p className="text-base font-semibold text-nowrap">Add to Cart</p>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* cart item details */}
@@ -58,6 +82,7 @@ CartItem.propTypes = {
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  isSelected: PropTypes.bool.isRequired,
 };
 
 export default CartItem;

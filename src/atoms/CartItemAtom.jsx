@@ -69,7 +69,9 @@ const CartItemAtom = (props) => {
               onClick={handleAddToCart}
             >
               <img src={iconAddToCart} alt="add to cart" />
-              <p className="text-base font-semibold text-nowrap">Add to Cart</p>
+              <p className="text-base font-semibold text-nowrap text-rose-900">
+                Add to Cart
+              </p>
             </button>
           )}
         </div>
@@ -78,7 +80,7 @@ const CartItemAtom = (props) => {
       {/* cart item details */}
       <div className="w-full mt-10 space-y-0.5">
         <p className="text-rose-400">{name}</p>
-        <p className="text-lg font-semibold">{category}</p>
+        <p className="text-lg font-semibold text-rose-900">{category}</p>
         <p className="text-lg font-semibold text-red">$ {price.toFixed(2)}</p>
       </div>
     </div>

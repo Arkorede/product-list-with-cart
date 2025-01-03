@@ -51,7 +51,7 @@ const MyCart = () => {
             {/* Total Price */}
             <div className="flex items-center justify-between my-8">
               <p className="text-[#52525b] font-semibold">Order Total</p>
-              <p className="text-2xl font-bold">${totalPrice}</p>
+              <p className="text-2xl font-bold text-rose-900">${totalPrice}</p>
             </div>
 
             {/* carbon-neutral delivery */}
@@ -92,7 +92,7 @@ const MyCart = () => {
             {/* Total Price */}
             <div className="flex items-center justify-between pt-8 pb-7">
               <p className="text-[#52525b] font-semibold">Order Total</p>
-              <p className="text-2xl font-bold">${totalPrice}</p>
+              <p className="text-2xl font-bold text-rose-900">${totalPrice}</p>
             </div>
           </div>
           <button

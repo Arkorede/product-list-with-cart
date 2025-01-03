@@ -19,7 +19,11 @@ export default {
       'white': 'hsl(0, 0%, 100%)',
       'black': 'hsl(0, 0%, 0%)'
     },
-    extend: {},
+    extend: {
+      textColor: {
+        DEFAULT: 'hsl(14, 65%, 9%)'
+      }
+    },
     screens: {
       'sm': '640px',
       'md': '768px',

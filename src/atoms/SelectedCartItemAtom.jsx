@@ -14,7 +14,7 @@ const SelectedCartItemAtom = (props) => {
     <>
       <div className="flex items-center justify-between border-b border-rose-100">
         <div className="flex flex-col pb-6 space-y-3">
-          <p className="font-bold">{name}</p>
+          <p className="font-bold text-rose-900">{name}</p>
           <div className="flex items-center justify-start">
             <p className="mr-5 font-semibold text-red">{quantity}x</p>
             <p className="mr-2 font-semibold text-rose-400">@ ${price}</p>

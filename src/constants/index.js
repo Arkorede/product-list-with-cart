@@ -1,7 +1,9 @@
+import waffleThumbnail from "../assets/images/image-waffle-thumbnail.jpg";
+
 export const products = [
   {
     "image": {
-      "thumbnail": "./src/assets/images/image-waffle-thumbnail.jpg",
+      "thumbnail": waffleThumbnail,
       "mobile": "./src/assets/images/image-waffle-mobile.jpg",
       "tablet": "./src/assets/images/image-waffle-tablet.jpg",
       "desktop": "./src/assets/images/image-waffle-desktop.jpg"

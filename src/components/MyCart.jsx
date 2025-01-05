@@ -57,7 +57,7 @@ const MyCart = () => {
             {/* carbon-neutral delivery */}
             <div className="flex items-center justify-center py-4 rounded-lg bg-rose-100 gap-x-2 lg:max-xl:gap-x-1">
               <img src={iconCarbonNeutral} alt="carbon neutral" />
-              <p className="text-[#52525b] text-base font-semibold text-nowrap lg:max-[1312px]:text-[13px]">
+              <p className="text-[#52525b] text-sm font-semibold text-nowrap lg:max-[1312px]:text-[13px]">
                 This is a{" "}
                 <span className="!text-[#000000]">carbon-neutral</span> delivery
               </p>

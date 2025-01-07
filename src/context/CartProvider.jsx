@@ -1,9 +1,10 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { CartContext } from "./CartContext";
 import PropTypes from "prop-types";
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [showMessage, setShowMessage] = useState(false);
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
@@ -13,6 +14,7 @@ export const CartProvider = ({ children }) => {
       );
       // If item is already in cart, update quantity
       if (existingItem) {
+        setShowMessage(true);
         return prevItems.map((cartItem) =>
           cartItem.name === item.name
             ? { ...cartItem, quantity: cartItem.quantity + 1, isSelected: true }
@@ -20,10 +22,21 @@ export const CartProvider = ({ children }) => {
         );
         // If item is not in cart, add item with quantity of 1
       } else {
+        setShowMessage(true);
         return [...prevItems, { ...item, quantity: 1, isSelected: true }];
       }
     });
   };
+
+  // Show message for 3 seconds
+  useEffect(() => {
+    if (showMessage) {
+      const timer = setTimeout(() => {
+        setShowMessage(false);
+      }, 10000000000);
+      return () => clearTimeout(timer);
+    }
+  }, [showMessage]);
 
   const increaseQuantity = (itemName) => {
     setCartItems((prevItems) =>
@@ -37,11 +50,13 @@ export const CartProvider = ({ children }) => {
 
   const decreaseQuantity = (itemName) => {
     setCartItems((prevItems) =>
-      prevItems.map((cartItem) =>
-        cartItem.name === itemName
-          ? { ...cartItem, quantity: Math.max(cartItem.quantity - 1, 1) }
-          : cartItem
-      )
+      prevItems
+        .map((cartItem) =>
+          cartItem.name === itemName
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        )
+        .filter((cartItem) => cartItem.quantity > 0)
     );
   };
 
@@ -85,6 +100,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         totalPrice,
+        showMessage,
       }}
     >
       {children}

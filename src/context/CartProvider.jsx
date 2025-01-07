@@ -33,7 +33,7 @@ export const CartProvider = ({ children }) => {
     if (showMessage) {
       const timer = setTimeout(() => {
         setShowMessage(false);
-      }, 10000000000);
+      }, 3000);
       return () => clearTimeout(timer);
     }
   }, [showMessage]);

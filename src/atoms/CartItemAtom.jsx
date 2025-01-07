@@ -50,16 +50,16 @@ const CartItemAtom = (props) => {
             <div className="flex items-center justify-between px-3 py-2.5 bg-red rounded-full w-[9.8125rem] xl:w-[10.875rem]">
               <button
                 className="w-5 h-5 p-1 border border-white rounded-full"
-                onClick={handleIncreaseQuantity}
+                onClick={handleDecreaseQuantity}
               >
-                <img src={iconIncrementQuantity} alt="increase quantity" />
+                <img src={iconDecrementQuantity} alt="decrease quantity" />
               </button>
               <p className="text-base font-semibold text-white">{quantity}</p>
               <button
                 className="w-5 h-5 p-1 border border-white rounded-full"
-                onClick={handleDecreaseQuantity}
+                onClick={handleIncreaseQuantity}
               >
-                <img src={iconDecrementQuantity} alt="decrease quantity" />
+                <img src={iconIncrementQuantity} alt="increase quantity" />
               </button>
             </div>
           ) : (

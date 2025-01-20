@@ -6,6 +6,7 @@ import SelectedCartItemAtom from "../atoms/SelectedCartItemAtom";
 import { useCart } from "../context/CartContext";
 import Modal from "./Modal";
 import ModalSelectedCartItemAtom from "../atoms/ModalSelectedCartItemAtom";
+import { PaystackButton } from "react-paystack";
 
 const MyCart = () => {
   const { cartItems, totalPrice, clearCart } = useCart();
@@ -18,6 +19,40 @@ const MyCart = () => {
   const handleCloseModal = () => {
     clearCart();
     setIsModalOpen(false);
+  };
+
+  const [value, setValue] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
+  console.log(value);
+
+  // const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setValue({ ...value, [e.target.name]: e.target.value });
+  };
+
+  const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
+
+  const { name, email, phone } = value;
+
+  const amount = totalPrice / 100;
+
+  const componentProps = {
+    email,
+    amount,
+    metadata: {
+      name,
+      phone,
+    },
+    publicKey,
+    text: "pay now",
+    onSuccess: () =>
+      alert("Thanks for doing business with us! Come back soon!!"),
+    onClose: () => alert("Wait! You need to eat, don't go!!!!"),
   };
 
   return (
@@ -51,7 +86,7 @@ const MyCart = () => {
             {/* Total Price */}
             <div className="flex items-center justify-between my-8">
               <p className="text-[#52525b] font-semibold">Order Total</p>
-              <p className="text-2xl font-bold text-rose-900">${totalPrice}</p>
+              <p className="text-2xl font-bold text-rose-900">₦{totalPrice}</p>
             </div>
 
             {/* carbon-neutral delivery */}
@@ -77,30 +112,98 @@ const MyCart = () => {
       {/* Confirm Order Modal */}
       {isModalOpen && (
         <Modal onClose={handleCloseModal}>
-          <img src={iconOrderConfirmed} alt="check" />
-          <h1 className="mt-4 mb-1.5 text-2xl font-bold text-rose-900">
-            <span className="block sm:inline-block">Order</span>{" "}
-            <span className="block sm:inline-block"> Confirmed</span>
-          </h1>
-          <p className="text-sm capitalize text-rose-400">
-            we hope you enjoy your food!
-          </p>
-          <div className="pt-1 rounded-lg mt-7 px-7 bg-rose-50">
-            {cartItems.map((cartItem, index) => {
-              return <ModalSelectedCartItemAtom key={index} {...cartItem} />;
-            })}
-            {/* Total Price */}
-            <div className="flex items-center justify-between pt-8 pb-7">
-              <p className="text-[#52525b] font-semibold">Order Total</p>
-              <p className="text-2xl font-bold text-rose-900">${totalPrice}</p>
+          <div className="flex flex-col min-[800px]:flex-row w-full gap-x-8">
+            {/* List of Ordered Items */}
+            <div className="w-full min-[800px]:w-1/2">
+              <img src={iconOrderConfirmed} alt="check" />
+              <h1 className="mt-4 mb-1.5 text-2xl font-bold text-rose-900">
+                <span className="block sm:inline-block">Order</span>{" "}
+                <span className="block sm:inline-block"> Confirmed</span>
+              </h1>
+              <p className="text-sm capitalize text-rose-400">
+                we hope you enjoy your food!
+              </p>
+              <div className="pt-1 rounded-lg mt-7 px-7 bg-rose-50">
+                {cartItems.map((cartItem, index) => {
+                  return (
+                    <ModalSelectedCartItemAtom key={index} {...cartItem} />
+                  );
+                })}
+                {/* Total Price */}
+                <div className="flex items-center justify-between pt-8 pb-7">
+                  <p className="text-[#52525b] font-semibold">Order Total</p>
+                  <p className="text-2xl font-bold text-rose-900">
+                    ₦{totalPrice}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Payment Form */}
+            <div className="w-full flex items-center min-[800px]:w-1/2">
+              <form className="pt-[68px] flex flex-col w-full h-full gap-y-8">
+                <div className="flex flex-col gap-y-2">
+                  <label
+                    htmlFor="name"
+                    className="text-xs font-semibold uppercase text-rose-900"
+                  >
+                    name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="pl-2 bg-transparent rounded-[5px] w-full h-[45px] outline-none border border-black"
+                    value={value.name}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <label
+                    htmlFor="email"
+                    className="text-xs font-semibold uppercase text-rose-900"
+                  >
+                    email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="pl-2 bg-transparent rounded-[5px] w-full h-[45px] outline-none border border-black"
+                    value={value.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="flex flex-col gap-y-2">
+                  <label
+                    htmlFor="phone"
+                    className="text-xs font-semibold uppercase text-rose-900"
+                  >
+                    phone number
+                  </label>
+                  <input
+                    type="text"
+                    name="phone"
+                    id="phone"
+                    className="pl-2 bg-transparent rounded-[5px] w-full h-[45px] outline-none border border-black"
+                    value={value.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                {/* <button
+                  className="w-full py-3 mt-[20px] text-sm text-white capitalize rounded-full bg-red hover:bg-[#9a3412]"
+                  onClick={handleCloseModal}
+                >
+                  place order
+                </button> */}
+                <PaystackButton
+                  {...componentProps}
+                  className="w-full py-3 mt-[20px] text-sm text-white capitalize rounded-full bg-red hover:bg-[#9a3412]"
+                />
+              </form>
             </div>
           </div>
-          <button
-            className="w-full py-4 mt-7 text-white capitalize rounded-full bg-red hover:bg-[#9a3412]"
-            onClick={handleCloseModal}
-          >
-            start new order
-          </button>
         </Modal>
       )}
     </div>

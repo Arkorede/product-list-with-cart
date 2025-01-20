@@ -17,8 +17,8 @@ const SelectedCartItemAtom = (props) => {
           <p className="font-bold text-rose-900">{name}</p>
           <div className="flex items-center justify-start">
             <p className="mr-5 font-semibold text-red">{quantity}x</p>
-            <p className="mr-2 font-semibold text-rose-400">@ ${price}</p>
-            <p className="font-bold text-rose-400">$ {price * quantity}</p>
+            <p className="mr-2 font-semibold text-rose-400">@ ₦{price}</p>
+            <p className="font-bold text-rose-400">₦ {price * quantity}</p>
           </div>
         </div>
         <button

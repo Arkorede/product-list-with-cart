@@ -12,7 +12,7 @@ const Modal = ({ children, onClose }) => {
       onClick={handleOutsideClick}
     >
       <div
-        className="px-8 py-9 bg-white rounded-lg w-full max-w-[31.25rem] max-h-[45rem] overflow-y-auto"
+        className="px-8 py-9 bg-white rounded-lg w-full max-w-[820px] max-h-[45rem] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {children}

@@ -16,11 +16,11 @@ const ModalSelectedCartItemAtom = (props) => {
             <p className="font-semibold truncate text-rose-900">{name}</p>
             <div className="flex items-center justify-start">
               <p className="mr-5 font-semibold text-red">{quantity}x</p>
-              <p className="mr-2 font-semibold text-rose-400">@ ${price}</p>
+              <p className="mr-2 font-semibold text-rose-400">@ ₦{price}</p>
             </div>
           </div>
         </div>
-        <p className="font-semibold text-rose-900">$ {price * quantity}</p>
+        <p className="font-semibold text-rose-900">₦ {price * quantity}</p>
       </div>
     </>
   );

@@ -30,7 +30,7 @@ const CartItemAtom = (props) => {
     <div className="w-full">
       {/* image with button container */}
       <div
-        className={`relative w-full ${
+        className={`relative w-full ₦{
           isSelected ? "border-2 border-red rounded-lg" : ""
         }`}
       >
@@ -41,7 +41,7 @@ const CartItemAtom = (props) => {
           <img
             src={image.thumbnail}
             alt="cart item"
-            className="w-full h-auto rounded-lg"
+            className="w-full h-[273px] rounded-lg"
           />
         </picture>
         <div className="absolute bottom-0 -translate-x-1/2 translate-y-1/2 left-1/2">
@@ -81,7 +81,7 @@ const CartItemAtom = (props) => {
       <div className="w-full mt-10 space-y-0.5">
         <p className="text-rose-400">{name}</p>
         <p className="text-lg font-semibold text-rose-900">{category}</p>
-        <p className="text-lg font-semibold text-red">$ {price.toFixed(2)}</p>
+        <p className="text-lg font-semibold text-red">₦ {price.toFixed(2)}</p>
       </div>
     </div>
   );

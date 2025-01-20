@@ -35,9 +35,9 @@ const CartItemAtom = (props) => {
         }`}
       >
         <picture className="">
-          <source srcSet={image.mobile} media="(max-width: 375px)" />
-          <source srcSet={image.tablet} media="(max-width: 768px)" />
-          <source srcSet={image.desktop} media="(max-width: 769px)" />
+          <source srcSet={image.mobile} media="(min-width: 375px)" />
+          <source srcSet={image.tablet} media="(min-width: 768px)" />
+          <source srcSet={image.desktop} media="(min-width: 769px)" />
           <img
             src={image.thumbnail}
             alt="cart item"
@@ -65,11 +65,11 @@ const CartItemAtom = (props) => {
           ) : (
             // add to cart button
             <button
-              className="flex gap-x-2.5 items-center justify-center px-[1.8125rem] py-2.5 xl:px-[2.3125rem] xl:py-3 border border-rose-400 rounded-full bg-white hover:border-red hover:text-red"
+              className="flex gap-x-2.5 items-center justify-center px-[1.8125rem] py-1.5 xl:px-[2.3125rem] xl:py-2 border border-rose-400 rounded-full bg-white hover:border-red hover:text-red"
               onClick={handleAddToCart}
             >
               <img src={iconAddToCart} alt="add to cart" />
-              <p className="text-base font-semibold text-nowrap text-rose-900">
+              <p className="text-sm font-semibold xl:text-base text-nowrap text-rose-900">
                 Add to Cart
               </p>
             </button>

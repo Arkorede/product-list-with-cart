@@ -2,7 +2,7 @@ import removeItemIcon from "../assets/images/icon-remove-item.svg";
 import PropTypes from "prop-types";
 import { useCart } from "../context/CartContext";
 
-const SelectedCartItemAtom = (props) => {
+const SelectedCartItem = (props) => {
   const { name, price, quantity } = props;
   const { removeFromCart } = useCart();
 
@@ -32,10 +32,10 @@ const SelectedCartItemAtom = (props) => {
   );
 };
 
-SelectedCartItemAtom.propTypes = {
+SelectedCartItem.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
 };
 
-export default SelectedCartItemAtom;
+export default SelectedCartItem;

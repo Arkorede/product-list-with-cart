@@ -1,5 +1,5 @@
 import { products } from "../constants";
-import CartItemAtom from "../atoms/CartItemAtom";
+import CartItem from "../subcomponents/CartItem";
 import { useCart } from "../context/CartContext";
 
 const ProductList = () => {
@@ -16,7 +16,7 @@ const ProductList = () => {
         const quantity = cartItem ? cartItem.quantity : 0;
         // Return the CartItem component for each product
         return (
-          <CartItemAtom
+          <CartItem
             key={index}
             {...product}
             isSelected={isSelected}

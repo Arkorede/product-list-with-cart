@@ -4,7 +4,7 @@ import iconDecrementQuantity from "../assets/images/icon-decrement-quantity.svg"
 import PropTypes from "prop-types";
 import { useCart } from "../context/CartContext";
 
-const CartItemAtom = (props) => {
+const CartItem = (props) => {
   const { image, name, category, price, isSelected, quantity } = props;
   const { addToCart, increaseQuantity, decreaseQuantity } = useCart();
 
@@ -81,7 +81,7 @@ const CartItemAtom = (props) => {
   );
 };
 
-CartItemAtom.propTypes = {
+CartItem.propTypes = {
   image: PropTypes.shape({
     mobile: PropTypes.string.isRequired,
     tablet: PropTypes.string.isRequired,
@@ -95,4 +95,4 @@ CartItemAtom.propTypes = {
   isSelected: PropTypes.bool.isRequired,
 };
 
-export default CartItemAtom;
+export default CartItem;

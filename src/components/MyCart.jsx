@@ -2,10 +2,10 @@ import { useState } from "react";
 import illustrationEmptyCart from "../assets/images/illustration-empty-cart.svg";
 import iconCarbonNeutral from "../assets/images/icon-carbon-neutral.svg";
 import iconOrderConfirmed from "../assets/images/icon-order-confirmed.svg";
-import SelectedCartItemAtom from "../atoms/SelectedCartItemAtom";
+import SelectedCartItem from "../subcomponents/SelectedCartItem";
 import { useCart } from "../context/CartContext";
 import Modal from "./Modal";
-import ModalSelectedCartItemAtom from "../atoms/ModalSelectedCartItemAtom";
+import ModalSelectedCartItem from "../subcomponents/ModalSelectedCartItem";
 import { PaystackButton } from "react-paystack";
 
 const MyCart = () => {
@@ -84,7 +84,7 @@ const MyCart = () => {
           <div className="w-full">
             <div className="mt-8 space-y-[1.125rem]">
               {cartItems.map((cartItem, index) => {
-                return <SelectedCartItemAtom key={index} {...cartItem} />;
+                return <SelectedCartItem key={index} {...cartItem} />;
               })}
             </div>
 
@@ -130,9 +130,7 @@ const MyCart = () => {
               </p>
               <div className="pt-1 rounded-lg mt-7 px-7 bg-rose-50">
                 {cartItems.map((cartItem, index) => {
-                  return (
-                    <ModalSelectedCartItemAtom key={index} {...cartItem} />
-                  );
+                  return <ModalSelectedCartItem key={index} {...cartItem} />;
                 })}
                 {/* Total Price */}
                 <div className="flex items-center justify-between pt-8 pb-7">

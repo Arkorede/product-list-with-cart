@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const ModalSelectedCartItemAtom = (props) => {
+const ModalSelectedCartItem = (props) => {
   const { name, price, quantity, image } = props;
 
   return (
@@ -28,7 +28,7 @@ const ModalSelectedCartItemAtom = (props) => {
   );
 };
 
-ModalSelectedCartItemAtom.propTypes = {
+ModalSelectedCartItem.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
@@ -37,4 +37,4 @@ ModalSelectedCartItemAtom.propTypes = {
   }).isRequired,
 };
 
-export default ModalSelectedCartItemAtom;
+export default ModalSelectedCartItem;

@@ -27,19 +27,23 @@ const MyCart = () => {
     phone: "",
   });
 
-  console.log(value);
-
-  // const [isLoading, setIsLoading] = useState(false);
-
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
+
+  const resetForm = () =>
+    setValue({
+      name: "",
+      email: "",
+      phone: "",
+    });
 
   const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
 
   const { name, email, phone } = value;
 
-  const amount = totalPrice / 100;
+  // converting to Kobo
+  const amount = totalPrice * 100;
 
   const componentProps = {
     email,
@@ -50,8 +54,9 @@ const MyCart = () => {
     },
     publicKey,
     text: "pay now",
-    onSuccess: () =>
-      alert("Thanks for doing business with us! Come back soon!!"),
+    onSuccess: () => {
+      alert("Thanks for doing business with us! Come back soon!!"), resetForm();
+    },
     onClose: () => alert("Wait! You need to eat, don't go!!!!"),
   };
 
@@ -141,7 +146,7 @@ const MyCart = () => {
 
             {/* Payment Form */}
             <div className="w-full flex items-center min-[800px]:w-1/2">
-              <form className="pt-[68px] flex flex-col w-full h-full gap-y-8">
+              <div className="pt-[68px] flex flex-col w-full h-full gap-y-8">
                 <div className="flex flex-col gap-y-2">
                   <label
                     htmlFor="name"
@@ -154,7 +159,7 @@ const MyCart = () => {
                     id="name"
                     name="name"
                     className="pl-2 bg-transparent rounded-[5px] w-full h-[45px] outline-none border border-black"
-                    value={value.name}
+                    value={name}
                     onChange={handleChange}
                   />
                 </div>
@@ -170,7 +175,7 @@ const MyCart = () => {
                     name="email"
                     id="email"
                     className="pl-2 bg-transparent rounded-[5px] w-full h-[45px] outline-none border border-black"
-                    value={value.email}
+                    value={email}
                     onChange={handleChange}
                   />
                 </div>
@@ -186,22 +191,17 @@ const MyCart = () => {
                     name="phone"
                     id="phone"
                     className="pl-2 bg-transparent rounded-[5px] w-full h-[45px] outline-none border border-black"
-                    value={value.phone}
+                    value={phone}
                     onChange={handleChange}
                   />
                 </div>
 
-                {/* <button
-                  className="w-full py-3 mt-[20px] text-sm text-white capitalize rounded-full bg-red hover:bg-[#9a3412]"
-                  onClick={handleCloseModal}
-                >
-                  place order
-                </button> */}
                 <PaystackButton
                   {...componentProps}
                   className="w-full py-3 mt-[20px] text-sm text-white capitalize rounded-full bg-red hover:bg-[#9a3412]"
+                  onClick={handleCloseModal}
                 />
-              </form>
+              </div>
             </div>
           </div>
         </Modal>

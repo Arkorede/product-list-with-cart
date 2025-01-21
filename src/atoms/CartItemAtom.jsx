@@ -3,12 +3,10 @@ import iconIncrementQuantity from "../assets/images/icon-increment-quantity.svg"
 import iconDecrementQuantity from "../assets/images/icon-decrement-quantity.svg";
 import PropTypes from "prop-types";
 import { useCart } from "../context/CartContext";
-import { useEffect } from "react";
 
 const CartItemAtom = (props) => {
   const { image, name, category, price, isSelected, quantity } = props;
-  const { addToCart, cartItems, increaseQuantity, decreaseQuantity } =
-    useCart();
+  const { addToCart, increaseQuantity, decreaseQuantity } = useCart();
 
   const handleAddToCart = () => {
     addToCart(props);
@@ -22,15 +20,11 @@ const CartItemAtom = (props) => {
     decreaseQuantity(props.name);
   };
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
-
   return (
     <div className="w-full">
       {/* image with button container */}
       <div
-        className={`relative w-full ₦{
+        className={`relative w-full ${
           isSelected ? "border-2 border-red rounded-lg" : ""
         }`}
       >
@@ -41,7 +35,7 @@ const CartItemAtom = (props) => {
           <img
             src={image.thumbnail}
             alt="cart item"
-            className="w-full h-[273px] rounded-lg"
+            className="w-full h-[186px] rounded-lg"
           />
         </picture>
         <div className="absolute bottom-0 -translate-x-1/2 translate-y-1/2 left-1/2">
@@ -69,7 +63,7 @@ const CartItemAtom = (props) => {
               onClick={handleAddToCart}
             >
               <img src={iconAddToCart} alt="add to cart" />
-              <p className="text-sm font-semibold xl:text-base text-nowrap text-rose-900">
+              <p className="text-sm font-semibold text-nowrap text-rose-900">
                 Add to Cart
               </p>
             </button>

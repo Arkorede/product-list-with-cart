@@ -17,7 +17,6 @@ const MyCart = () => {
   };
 
   const handleCloseModal = () => {
-    clearCart();
     setIsModalOpen(false);
   };
 
@@ -31,12 +30,14 @@ const MyCart = () => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
 
-  const resetForm = () =>
+  const resetForm = () => {
     setValue({
       name: "",
       email: "",
       phone: "",
     });
+    clearCart();
+  };
 
   const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
 

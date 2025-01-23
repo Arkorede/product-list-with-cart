@@ -29,13 +29,13 @@ const CartItem = (props) => {
         }`}
       >
         <picture className="">
-          <source srcSet={image.mobile} media="(min-width: 375px)" />
+          <source srcSet={image.mobile} media="(min-width: 320px)" />
           <source srcSet={image.tablet} media="(min-width: 768px)" />
           <source srcSet={image.desktop} media="(min-width: 769px)" />
           <img
             src={image.thumbnail}
             alt="cart item"
-            className="object-cover rounded-lg"
+            className="object-cover w-full rounded-lg"
           />
         </picture>
         <div className="absolute bottom-0 -translate-x-1/2 translate-y-1/2 left-1/2">

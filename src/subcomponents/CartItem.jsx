@@ -35,7 +35,7 @@ const CartItem = (props) => {
           <img
             src={image.thumbnail}
             alt="cart item"
-            className="object-cover w-full rounded-lg"
+            className="object-cover w-full h-full rounded-lg"
           />
         </picture>
         <div className="absolute bottom-0 -translate-x-1/2 translate-y-1/2 left-1/2">

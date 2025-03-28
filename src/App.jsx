@@ -7,7 +7,7 @@ function App() {
   const { showMessage } = useCart();
 
   return (
-    <div className="px-[1.5625rem] py-6 sm:px-[1.875rem] sm:py-7 md:px-[3.125rem] md:py-9 lg:px-[3.125rem] lg:py-12 xl:px-[6.6875rem] xl:py-[3.25rem] bg-rose-50 grid lg:grid-cols-12 gap-x-7 gap-y-10">
+    <main className="px-[1.5625rem] py-6 sm:px-[1.875rem] sm:py-7 md:px-[3.125rem] md:py-9 lg:px-[3.125rem] lg:py-12 xl:px-[6.6875rem] xl:py-[3.25rem] bg-rose-50 grid lg:grid-cols-12 gap-x-7 gap-y-10">
       {/* Message for cart items displayed */}
       {showMessage && <Notification />}
       <div className="w-full col-span-full lg:col-span-8">
@@ -19,7 +19,7 @@ function App() {
       <div className="col-span-full lg:col-span-4">
         <MyCart />
       </div>
-    </div>
+    </main>
   );
 }
 
